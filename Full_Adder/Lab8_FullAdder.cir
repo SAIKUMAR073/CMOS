@@ -1,0 +1,51 @@
+**CMOS Logic Full Adder
+VDD 9 0 dc 5V
+VA 1 0 pulse(0 5 0ns 0ns 0ns 5ms 10ms)
+VB 2 0 pulse(0 5 0ns 0ns 0ns 10ms 20ms)
+VCin 3 0 pulse(0 5 0ns 0ns 0ns 20ms 40ms)
+.model nmod nmos level = 54 verison = 4.7 
+.model pmod pmos level = 54 verison = 4.7
+
+MCoutbarNA1 4 1 0 0 nmod w = 100u l = 10u
+MCoutbarNB1 6 2 4 0 nmod w = 100u l = 10u
+MCoutbarNCin 6 3 5 0 nmod w = 100u l = 10u
+MCoutbarNA2 5 1 0 0 nmod w = 100u l = 10u
+MCoutbarNB2 5 2 0 0 nmod w = 100u l = 10u
+MCoutbarPA1 7 1 8 9 pmod w = 50u l = 10u 
+MCoutbarPB1 6 2 7 9 pmod w = 50u l = 10u
+MCoutbarPCin 6 3 8 9 pmod w = 50u l = 10u
+MCoutbarPA2 8 1 9 9 pmod w = 50u l = 10u
+MCoutbarPB2 8 2 9 9 pmod w = 50u l = 10u
+
+MCoutInverterN 17 6 0 0 nmod w = 100u l = 10u
+MCoutInverterP 17 6 9 9 pmod w = 50u l = 10u 
+
+MSumbarNA1 10 1 0 0 nmod w = 100u l = 10u
+MSumbarNB1 10 2 0 0 nmod w = 100u l = 10u
+MSumbarNCin1 10 3 0 0 nmod w = 100u l = 10u
+MSumbarNA2 11 1 0 0 nmod w = 100u l = 10u
+MSumbarNB2 12 2 11 0nmod w = 100u l = 10u
+MSumbarNCin2 13 3 12 0 nmod w = 100u l = 10u
+MSumbarNCout 13 6 10 0 nmod w = 100u l = 10u 
+MSumbarPA1 13 1 15 9 pmod w = 50u l = 10u 
+MSumbarPB1 15 2 16 9 pmod w = 50u l = 10u
+MSumbarPCin1 16 3 14 9 pmod w = 50u l = 10u
+MSumbarPA2 14 1 9 9 pmod w = 50u l = 10u
+MSumbarPB2 14 2 9 9 pmod w = 50u l = 10u
+MSumbarPCin2 14 3 9 9 pmod w = 50u l = 10u
+MSumbarPCout 13 6 14 9 pmod w = 50u l = 10u 
+
+MSumInverterN 18 13 0 0 nmod w = 100u l = 10u
+MSumInverterP 18 13 9 9 pmod w = 50u l = 10u 
+
+.tran 0.01ms 40ms
+.control
+run
+plot V(1) 
+plot V(2) 
+plot V(3) 
+plot V(17)
+plot V(18)
+.endc
+.end
+
